@@ -1,7 +1,6 @@
 public class Maze {
     //0 = path, 1 = wall, 2 = end
     int[][] maze;
-    int[] start = {0, 0};
     String info;
 
     public int[][] getMaze()
@@ -9,15 +8,16 @@ public class Maze {
         return maze;
     }
    
-    public void leftHandMaze()
+    public void Simple()
     {
-        maze = new int[][]{ {0, 1, 0, 0, 0, 1, 0, 1}, 
-                            {0, 1, 0, 1, 0, 1, 0, 1},
-                            {0, 1, 0, 1, 1, 1, 0, 1},
-                            {0, 1, 0, 0, 0, 0, 0, 1},
-                            {0, 1, 1, 1, 0, 1, 0, 1},
-                            {0, 0, 0, 0, 0, 1, 0, 2},
-                            {1, 1, 1, 1, 1, 1, 1, 1,}};
+        int[][] m = { {2, 1, 0, 0, 0, 1, 0, 1}, 
+                        {0, 1, 0, 1, 0, 1, 0, 1},
+                        {0, 1, 0, 1, 1, 1, 0, 1},
+                        {0, 1, 0, 0, 0, 0, 0, 1},
+                        {0, 1, 1, 1, 0, 1, 0, 1},
+                        {0, 0, 0, 0, 0, 1, 0, 3},
+                        {1, 1, 1, 1, 1, 1, 1, 1,}};
+        maze = m;
         info = new String("- Keine freistehenden Wände \n- Sackgassen \n- Kreuzungen");
     }
 }

@@ -1,15 +1,16 @@
-import java.awt.GridLayout;
-
+import java.awt.*;
 import javax.swing.*;
 
 public class Interface{
     JFrame frame;
+    JPanel mazeOptPanel;
     JPanel mazePanel;
+
 
     public Interface()
     {
         frame = new JFrame();
-        mazePanel = new JPanel();
+        mazeOptPanel = new JPanel();
 
         JLabel space = new JLabel("");
         JButton b1 = new JButton("Simpel");    
@@ -17,27 +18,30 @@ public class Interface{
         JButton b3 = new JButton("Komplex");    
         JButton b4 = new JButton("Groß"); 
 
-        mazePanel.add(space);mazePanel.add(b1);mazePanel.add(b2);mazePanel.add(b3);mazePanel.add(b4);
+        mazeOptPanel.add(space);mazeOptPanel.add(b1);mazeOptPanel.add(b2);mazeOptPanel.add(b3);mazeOptPanel.add(b4);
 
-        mazePanel.setLayout(new GridLayout(5, 1, 20, 0));
-        mazePanel.setSize(400,600);
-        frame.add(mazePanel);
+        JLabel mpHead = new JLabel("Labyrinth Arten");
+        mpHead.setBounds(90,10, 300, 100);
+        mpHead.setFont(new Font("Calibri", Font.BOLD, 30));
+
+        mazeOptPanel.setLayout(new GridLayout(5, 1, 20, 0));
+        mazeOptPanel.setSize(400,600);
+
+        frame.add(mpHead);
+        frame.add(mazeOptPanel);
+        
         frame.setLayout(null);
         frame.setSize(2000, 1000);
         frame.setVisible(true);
+        
     }
 
-    public void ShowMaze(int[][] m, int[] start)
+    public void ShowMaze(int[][] m)
     {
-        //maze size over 500 by 500 area
-        @SuppressWarnings("unused")
-        int[] blockSize = new int[]{ 500 /m.length , 500 / m[0].length};
-        for(int i = 0; i < m.length; i++)
-        {
-            for(int j = 0; j < m[0].length; j++)
-            {
-                //frame.getContentPane().add(new Square(10, 10, 100, 100));
-            }
-        }
+        Grid mGraph = new Grid(500, 500, m);
+         mGraph.setLayout(null);
+         mGraph.setBounds(500, 100, 500, 500);
+        frame.add(mGraph);
     }
+
 }
