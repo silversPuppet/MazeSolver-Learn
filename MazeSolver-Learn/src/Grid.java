@@ -1,22 +1,51 @@
+import java.util.ArrayList;
+import java.awt.*;
+import javax.swing.*;
 
-import java.awt.Color;
-import java.awt.Graphics;
-
-import javax.swing.JPanel;
+import java.awt.event.*;
 
 public class Grid extends JPanel{
     int width;
     int height;
     int[][] maze;
 
-    public Grid(int w, int h, int[][] m) 
+    ArrayList<int[]> cords;
+    int curPCount = 0;
+
+
+    public Grid(int w, int h, int[][] m, ArrayList<int[]> c, int speed) 
     {
         setSize(width = w, height = h);
         maze = m;
+
+        cords = c;
+        width = w / 2;
+        m = maze;
+
+        for(int i = 0; i < cords.size(); i++)
+        {
+            System.out.println(cords.get(i)[0] + " " + cords.get(i)[1]);
+        }
+
+        Timer timer = new Timer(speed, new ActionListener() {  // 500ms delay
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                curPCount++;   // Increase the number of path spaces
+                // Repaint the panel to show the update
+                System.out.println("DEBUG" + curPCount);
+                repaint();
+                if (curPCount >= cords.size()) {  // Stop after reaching all cords
+                    ((Timer) e.getSource()).stop();
+                }
+            }
+        });
+        timer.start();
     }
     
-    public void paint(Graphics g)
+    public void paintComponent(Graphics g)
     {
+        super.paintComponent(g);
+
         width = getSize().width;
         height = getSize().height;
 
@@ -51,6 +80,14 @@ public class Grid extends JPanel{
                 }
             }
             
+        }
+        float sphereSize = (int) (rowH + colH) / 2.75f ;
+        g.setColor(new Color(1f, 0.22f, 0.39f, 0.5f));
+        for(int i = 0; i < curPCount; i++)
+        {
+            
+            g.fillOval(cords.get(i)[0] * rowH + rowH/(rowH / 5), cords.get(i)[1] * colH + colH/(colH / 10),(int) sphereSize , (int) sphereSize);
+            //System.out.println(cords.get(i)[0] + " " + cords.get(i)[1]);
         }
         
     }

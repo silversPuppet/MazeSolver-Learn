@@ -1,6 +1,5 @@
 public class HandOnWall extends Solver{
     int[] start;
-    int[] lastCord;
     Interface gui;
 
     public void Solve(int[][] m, Interface i)
@@ -24,7 +23,7 @@ public class HandOnWall extends Solver{
 
             //Y coordinate then X because of array 
             while (m[start[1]][start[0]] != 3) {
-                
+
                 //If There isn't a wall to the left of you
                 if(isWall(dir, m, 1) == false)
                 {
@@ -57,12 +56,13 @@ public class HandOnWall extends Solver{
                     }
                     WalkForward(dir);
                 }   
-                gui.drawPath(m, start);
+                gui.addCord(start);
                 System.out.println(start[0] + " " + start[1] + " Walked");  
                 System.out.println(m[start[1]][start[0]]);  
 
 
             }
+            gui.ShowMaze(m);
         }
     }
 

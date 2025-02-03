@@ -13,7 +13,9 @@ public class Interface{
     int[][] curM;
     Interface gui = this;
 
-    int waitTime;
+    int speed = 200;
+    ArrayList<int[]> cords = new ArrayList<>();
+
 
     public Interface()
     {
@@ -74,19 +76,25 @@ public class Interface{
     public void ShowMaze(int[][] m)
     {
         curM = m;
-        Grid mGraph = new Grid(500, 500, m);
+        Grid mGraph = new Grid(500, 500, m, cords, speed);
          mGraph.setLayout(null);
          mGraph.setBounds(500, 100, 500, 500);
         frame.add(mGraph);
     }
 
-    public void drawPath(int[][] m, int[] cord)
+    public void addCord(int[] cord)
     {
-        Path p = new Path(cord, 500 / m[0].length , 500 / m.length);
-        p.setLayout(null);
-        p.setBounds(515 + cord[0] * 500 /m[0].length,125 + cord[1] *  500 /m.length, 500 / m[0].length , 500 / m.length);
-        frame.add(p, 2, 0);
-
+        int[] c = new int[cord.length];
+        for(int i = 0; i < cord.length; i++)
+        {
+            c[i] = cord[i];
+        }
+        cords.add(c);
+        System.out.println("CORD CORD CORD CORD       " + cord[0] + " " + cord[1]);
+        for(int i = 0; i < cords.size(); i++)
+        {
+            System.out.println(cords.get(i)[0] + " " + cords.get(i)[1]);
+        }
     }
 
 }
