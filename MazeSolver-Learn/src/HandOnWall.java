@@ -1,8 +1,12 @@
 public class HandOnWall extends Solver{
     int[] start;
+    int[] lastCord;
+    Interface gui;
 
-    public void Solve(int[][] m)
+    public void Solve(int[][] m, Interface i)
     {
+        gui = i;
+
         start = FindStart(m);
         //start[0] = x start[1] = y
         System.out.println(start[0] + " " + start[1]);
@@ -20,6 +24,7 @@ public class HandOnWall extends Solver{
 
             //Y coordinate then X because of array 
             while (m[start[1]][start[0]] != 3) {
+                
                 //If There isn't a wall to the left of you
                 if(isWall(dir, m, 1) == false)
                 {
@@ -52,11 +57,16 @@ public class HandOnWall extends Solver{
                     }
                     WalkForward(dir);
                 }   
+                gui.drawPath(m, start);
                 System.out.println(start[0] + " " + start[1] + " Walked");  
                 System.out.println(m[start[1]][start[0]]);  
+
+
             }
         }
     }
+
+
 
     //Returns ture if There is a Wall forward
     public boolean isWall(int d, int[][] m, int wallDir)

@@ -6,6 +6,6 @@ public class App {
         m.Simple();
         master.ShowMaze(m.getMaze());
         System.out.println("Hello, World!");
-        s.Solve(m.getMaze());
+        s.Solve(m.getMaze(), master);
     }
 }

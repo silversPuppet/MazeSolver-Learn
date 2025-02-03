@@ -1,11 +1,19 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class Interface{
     JFrame frame;
     JPanel mazeOptPanel;
     JPanel mazePanel;
+    JPanel solveOptPanel;
+    int[][] curM;
+    Interface gui = this;
 
+    int waitTime;
 
     public Interface()
     {
@@ -26,22 +34,59 @@ public class Interface{
 
         mazeOptPanel.setLayout(new GridLayout(5, 1, 20, 0));
         mazeOptPanel.setSize(400,600);
+        
+
+        JLabel spHead = new JLabel("Algorithmus Arten");
+        spHead.setBounds(1150,10, 300, 100);
+        spHead.setFont(new Font("Calibri", Font.BOLD, 30));
+
+        solveOptPanel = new JPanel();
+
+        JLabel space2 = new JLabel("");
+        JButton sb1 = new JButton("LinkeHand");    
+        sb1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                HandOnWall h = new HandOnWall();
+                h.Solve(curM, gui);
+            }
+        });
+        JButton sb2 = new JButton("Tremaux");    
+        JButton sb3 = new JButton("Rekursiv");    
+
+        solveOptPanel.add(space2);solveOptPanel.add(sb1);solveOptPanel.add(sb2);solveOptPanel.add(sb3);
+
+        solveOptPanel.setLayout(new GridLayout(5, 1, 20, 0));
+        solveOptPanel.setSize(400,600);
+        solveOptPanel.setLocation(1100, 50);
 
         frame.add(mpHead);
         frame.add(mazeOptPanel);
+
+        frame.add(spHead);
+        frame.add(solveOptPanel);
         
         frame.setLayout(null);
         frame.setSize(2000, 1000);
-        frame.setVisible(true);
-        
+        frame.setVisible(true);   
     }
 
     public void ShowMaze(int[][] m)
     {
+        curM = m;
         Grid mGraph = new Grid(500, 500, m);
          mGraph.setLayout(null);
          mGraph.setBounds(500, 100, 500, 500);
         frame.add(mGraph);
+    }
+
+    public void drawPath(int[][] m, int[] cord)
+    {
+        Path p = new Path(cord, 500 / m[0].length , 500 / m.length);
+        p.setLayout(null);
+        p.setBounds(515 + cord[0] * 500 /m[0].length,125 + cord[1] *  500 /m.length, 500 / m[0].length , 500 / m.length);
+        frame.add(p, 2, 0);
+
     }
 
 }

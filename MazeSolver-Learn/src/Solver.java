@@ -1,7 +1,7 @@
 public abstract class Solver {
     int[] start;
 
-    public abstract void Solve(int[][] m);
+    public abstract void Solve(int[][] m, Interface i);
 
     public int[] FindStart(int[][] m)
     {
