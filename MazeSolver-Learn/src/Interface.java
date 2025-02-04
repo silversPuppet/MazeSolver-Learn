@@ -13,18 +13,39 @@ public class Interface{
     int[][] curM;
     Interface gui = this;
 
-    int speed = 200;
+    int speed = 20;
     ArrayList<int[]> cords = new ArrayList<>();
 
+    Maze mazeContr;
+    Grid mGraph;
+    Solver curSolver;
 
-    public Interface()
+
+    public Interface(Maze mContr)
     {
         frame = new JFrame();
         mazeOptPanel = new JPanel();
+        mazeContr = mContr;
 
         JLabel space = new JLabel("");
-        JButton b1 = new JButton("Simpel");    
+        JButton b1 = new JButton("Simpel");   
+        b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                mazeContr.Simple();
+                resetMaze();
+                ShowMaze(mazeContr.getMaze());
+            }
+        }); 
         JButton b2 = new JButton("Freistehend");    
+        b2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                mazeContr.Freestanding();
+                resetMaze();
+                ShowMaze(mazeContr.getMaze());
+            }
+        });
         JButton b3 = new JButton("Komplex");    
         JButton b4 = new JButton("Groß"); 
 
@@ -49,8 +70,8 @@ public class Interface{
         sb1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
-                HandOnWall h = new HandOnWall();
-                h.Solve(curM, gui);
+                resetMaze();
+                curSolver= new HandOnWall(curM, gui);
             }
         });
         JButton sb2 = new JButton("Tremaux");    
@@ -75,8 +96,9 @@ public class Interface{
 
     public void ShowMaze(int[][] m)
     {
+
         curM = m;
-        Grid mGraph = new Grid(500, 500, m, cords, speed);
+         mGraph = new Grid(500, 500, m, cords, speed);
          mGraph.setLayout(null);
          mGraph.setBounds(500, 100, 500, 500);
         frame.add(mGraph);
@@ -90,11 +112,17 @@ public class Interface{
             c[i] = cord[i];
         }
         cords.add(c);
-        System.out.println("CORD CORD CORD CORD       " + cord[0] + " " + cord[1]);
-        for(int i = 0; i < cords.size(); i++)
+    }
+
+    public void resetMaze()
+    {
+        if(mGraph != null)
         {
-            System.out.println(cords.get(i)[0] + " " + cords.get(i)[1]);
+            frame.remove(mGraph);
         }
+        curSolver = null;
+        cords = new ArrayList<int[]>();
+        
     }
 
 }

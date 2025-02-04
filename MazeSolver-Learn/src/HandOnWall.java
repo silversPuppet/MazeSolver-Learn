@@ -1,15 +1,18 @@
 public class HandOnWall extends Solver{
     int[] start;
-    Interface gui;
 
-    public void Solve(int[][] m, Interface i)
+    int numWalks = 0;
+
+
+    public HandOnWall(int[][] m, Interface i)
     {
+        super(m, i);
+
+
+        
         gui = i;
 
         start = FindStart(m);
-        //start[0] = x start[1] = y
-        System.out.println(start[0] + " " + start[1]);
-
         //Shows current dirrection you are facing at 
         //          E
         // 0 =  N       S   
@@ -22,12 +25,11 @@ public class HandOnWall extends Solver{
             //TO-DO: Check End
 
             //Y coordinate then X because of array 
-            while (m[start[1]][start[0]] != 3) {
+            while (m[start[1]][start[0]] != 3 && numWalks < (m.length * m[0].length) ) {
 
                 //If There isn't a wall to the left of you
                 if(isWall(dir, m, 1) == false)
                 {
-                    System.out.print("No wall on Left. Rotated from " + dir + " To ");
                     if(dir < 3)
                     {
                         dir++;    
@@ -35,32 +37,25 @@ public class HandOnWall extends Solver{
                     else {
                         dir = 0;
                     }
-                    System.out.print(dir + " DIRECTION \n");
                     WalkForward(dir);
                 }
                 else
                 {
-                    //Rotate Left until walkspace available 
+                    //Rotate right until walkspace available 
                     while (isWall(dir, m, 0)) {
-                        System.out.println("WALL ");
-                        System.out.print("Rotated from " + dir);
-                        if(dir < 3)
+
+                        if(dir > 0)
                         {    
-                            dir++;
+                            dir--;
                         }   
                         else {
-                            dir = 0;
+                            dir = 3;
                         }
-                        System.out.print(" To " + dir + "\n");
-                        
                     }
                     WalkForward(dir);
                 }   
                 gui.addCord(start);
-                System.out.println(start[0] + " " + start[1] + " Walked");  
-                System.out.println(m[start[1]][start[0]]);  
-
-
+                numWalks++;
             }
             gui.ShowMaze(m);
         }
@@ -81,8 +76,6 @@ public class HandOnWall extends Solver{
         {
             d +=  wallDir;
         }
-
-        System.out.print(d + " Direction before wall check \n");
 
         switch (d) {
             //Facing Down
@@ -146,8 +139,8 @@ public class HandOnWall extends Solver{
         }
     }
 
+    public void PauseStart()
+    {
 
-    
-
-    
+    }
 }

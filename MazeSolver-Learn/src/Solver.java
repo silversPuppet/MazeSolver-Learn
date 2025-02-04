@@ -1,7 +1,11 @@
 public abstract class Solver {
     int[] start;
+    Interface gui;
 
-    public abstract void Solve(int[][] m, Interface i);
+    public Solver(int[][] m, Interface i)
+    {
+        gui = i;
+    }
 
     public int[] FindStart(int[][] m)
     {
@@ -14,6 +18,10 @@ public abstract class Solver {
                 }
             }
         }
+        gui.addCord(start);
+
         return null;
     }
+
+    
 }
