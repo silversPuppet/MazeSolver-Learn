@@ -22,7 +22,7 @@ public class Grid extends JPanel{
         cords = c;
         width = w / 2;
         m = maze;
-
+        
               Timer timer = new Timer(speed, new ActionListener() {  // 500ms delay
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -35,6 +35,7 @@ public class Grid extends JPanel{
                 }
             });
             timer.start();
+
     }
     
     public void paintComponent(Graphics g)

@@ -88,12 +88,8 @@ public class Interface{
 
         JPanel mazeContrPanel = new JPanel();
 
-       
-
-        JButton pauseToggleB = new JButton("Start/Pause");
-
         JLabel delayLabel = new JLabel("Delay");
-        delayLabel.setBounds(850, 620, 100, 20);
+        delayLabel.setBounds(400, 0, 500, 20);
         delayLabel.setFont(new Font("Calibri", Font.BOLD, 15));
         JSlider delaySlider = new JSlider(JSlider.HORIZONTAL, 0, 200, 20);
         delaySlider.addChangeListener(new ChangeListener() {
@@ -105,13 +101,14 @@ public class Interface{
         });
         delaySlider.setPaintLabels(true);
         delaySlider.setMajorTickSpacing(50);
+        delaySlider.setBounds(400, 0, 500, 20);
 
 
-
-        mazeContrPanel.add(pauseToggleB); mazeContrPanel.add(delaySlider);
-        mazeContrPanel.setLayout(new GridLayout(1, 3, 20, 20));
-        mazeContrPanel.setSize(500,50);
-        mazeContrPanel.setLocation(500, 650);
+        mazeContrPanel.add(delayLabel);
+        mazeContrPanel.add(delaySlider);
+        mazeContrPanel.setLayout(new GridLayout(2, 1, 20, 30));
+        mazeContrPanel.setSize(500,100);
+        mazeContrPanel.setLocation(500, 600);
 
        
 
@@ -121,7 +118,6 @@ public class Interface{
         frame.add(spHead);
         frame.add(solveOptPanel);
 
-        frame.add(delayLabel);
         frame.add(mazeContrPanel);
         
         frame.setLayout(null);
