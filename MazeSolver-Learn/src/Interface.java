@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class Interface{
     JFrame frame;
@@ -83,11 +85,44 @@ public class Interface{
         solveOptPanel.setSize(400,600);
         solveOptPanel.setLocation(1100, 50);
 
+
+        JPanel mazeContrPanel = new JPanel();
+
+       
+
+        JButton pauseToggleB = new JButton("Start/Pause");
+
+        JLabel delayLabel = new JLabel("Delay");
+        delayLabel.setBounds(850, 620, 100, 20);
+        delayLabel.setFont(new Font("Calibri", Font.BOLD, 15));
+        JSlider delaySlider = new JSlider(JSlider.HORIZONTAL, 0, 200, 20);
+        delaySlider.addChangeListener(new ChangeListener() {
+            public void stateChanged( ChangeEvent evt)
+            {
+                JSlider delay = (JSlider) evt.getSource();
+                speed = delay.getValue();
+            }
+        });
+        delaySlider.setPaintLabels(true);
+        delaySlider.setMajorTickSpacing(50);
+
+
+
+        mazeContrPanel.add(pauseToggleB); mazeContrPanel.add(delaySlider);
+        mazeContrPanel.setLayout(new GridLayout(1, 3, 20, 20));
+        mazeContrPanel.setSize(500,50);
+        mazeContrPanel.setLocation(500, 650);
+
+       
+
         frame.add(mpHead);
         frame.add(mazeOptPanel);
 
         frame.add(spHead);
         frame.add(solveOptPanel);
+
+        frame.add(delayLabel);
+        frame.add(mazeContrPanel);
         
         frame.setLayout(null);
         frame.setSize(2000, 1000);
