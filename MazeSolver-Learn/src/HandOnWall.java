@@ -1,5 +1,5 @@
 public class HandOnWall extends Solver{
-    int[] start;
+
 
     int numWalks = 0;
 
@@ -9,7 +9,7 @@ public class HandOnWall extends Solver{
         super(m, i);
 
 
-        
+
         gui = i;
 
         start = FindStart(m);

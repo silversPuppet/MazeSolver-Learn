@@ -25,6 +25,8 @@ public class Interface{
 
     public Interface(Maze mContr)
     {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension dim = toolkit.getScreenSize();
         frame = new JFrame();
         mazeOptPanel = new JPanel();
         mazeContr = mContr;
@@ -77,7 +79,14 @@ public class Interface{
             }
         });
         JButton sb2 = new JButton("Tremaux");    
-        JButton sb3 = new JButton("Rekursiv");    
+        JButton sb3 = new JButton("Rekursiv/DFS");  
+        sb1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                resetMaze();
+                curSolver= new Rekursiv(curM, gui);
+            }
+        });  
 
         solveOptPanel.add(space2);solveOptPanel.add(sb1);solveOptPanel.add(sb2);solveOptPanel.add(sb3);
 
@@ -121,7 +130,7 @@ public class Interface{
         frame.add(mazeContrPanel);
         
         frame.setLayout(null);
-        frame.setSize(2000, 1000);
+        frame.setSize(dim.width, dim.height);
         frame.setVisible(true);   
     }
 

@@ -15,7 +15,7 @@ public class Maze {
                         {1, 0, 1, 0, 1, 1, 1, 0, 1},
                         {1, 0, 1, 0, 0, 0, 0, 0, 1},
                         {1, 0, 1, 1, 1, 0, 1, 0, 1},
-                        {1, 0, 0, 0, 0, 0, 1, 0, 3},
+                        {1, 0, 0, 0, 0, 0, 1, 3, 1},
                         {1, 1, 1, 1, 1, 1, 1, 1, 1}};
         maze = m;
         info = new String("- Keine freistehenden Wände \n- Sackgassen \n- Kreuzungen");
