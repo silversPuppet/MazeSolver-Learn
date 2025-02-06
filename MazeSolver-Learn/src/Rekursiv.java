@@ -18,6 +18,7 @@ public class Rekursiv extends Solver{
 
         boolean b = recursiveSolve(start[0], start[1]);
 
+        gui.ShowMaze(m);
     }
 
     public boolean recursiveSolve(int x, int y) {

@@ -80,11 +80,11 @@ public class Interface{
         });
         JButton sb2 = new JButton("Tremaux");    
         JButton sb3 = new JButton("Rekursiv/DFS");  
-        sb1.addActionListener(new ActionListener() {
+        sb3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
                 resetMaze();
-                curSolver= new Rekursiv(curM, gui);
+                curSolver = new Rekursiv(curM, gui);
             }
         });  
 

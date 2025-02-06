@@ -139,8 +139,5 @@ public class HandOnWall extends Solver{
         }
     }
 
-    public void PauseStart()
-    {
-
-    }
+ 
 }
