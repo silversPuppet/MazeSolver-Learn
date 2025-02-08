@@ -1,10 +1,10 @@
-public class Rekursiv extends Solver{
+public class DepthfFirstSearch extends Solver{
     
     int[][] maze;
     boolean[][] wasHere;
     boolean[][] correctPath;
 
-    public Rekursiv(int[][] m, Interface in)
+    public DepthfFirstSearch(int[][] m, Interface in)
     {
         super(m, in);
         gui = in;
@@ -22,11 +22,9 @@ public class Rekursiv extends Solver{
     }
 
     public boolean recursiveSolve(int x, int y) {
-        System.out.println(x + " " + y);
         // reached end
         if (maze[y][x] == 3) {
             return true;
-
         }
         // On wall or there before
         if (maze[y][x] == 1 || wasHere[y][x] == true) {
@@ -70,4 +68,6 @@ public class Rekursiv extends Solver{
         return false;
 
     }
+
+    
 }

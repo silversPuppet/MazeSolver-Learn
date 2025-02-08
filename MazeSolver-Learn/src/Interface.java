@@ -51,7 +51,23 @@ public class Interface{
             }
         });
         JButton b3 = new JButton("Komplex");    
+        b3.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e)
+            {
+                mazeContr.Komplex();
+                resetMaze();
+                ShowMaze(mazeContr.getMaze());
+            }
+        });
         JButton b4 = new JButton("Groß"); 
+        b4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+                {
+                    mazeContr.Big();
+                    resetMaze();
+                    ShowMaze(mazeContr.getMaze());
+                }
+            });
 
         mazeOptPanel.add(space);mazeOptPanel.add(b1);mazeOptPanel.add(b2);mazeOptPanel.add(b3);mazeOptPanel.add(b4);
 
@@ -78,13 +94,20 @@ public class Interface{
                 curSolver= new HandOnWall(curM, gui);
             }
         });
-        JButton sb2 = new JButton("Tremaux");    
-        JButton sb3 = new JButton("Rekursiv/DFS");  
+        JButton sb2 = new JButton("Breitensuche");  
+        sb2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                resetMaze();
+                curSolver = new BreathFirstSearch(curM, gui);
+            }
+        });   
+        JButton sb3 = new JButton("Tiefensuche");  
         sb3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
                 resetMaze();
-                curSolver = new Rekursiv(curM, gui);
+                curSolver = new DepthfFirstSearch(curM, gui);
             }
         });  
 

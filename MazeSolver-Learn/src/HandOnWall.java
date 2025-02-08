@@ -63,19 +63,20 @@ public class HandOnWall extends Solver{
 
 
 
-    //Returns ture if There is a Wall forward
+    //Returns true if There is a Wall forward
     public boolean isWall(int d, int[][] m, int wallDir)
     {
          //Check Wall Left with wall dir = 0
         //Check Wall Forward with wall dir
         if(d + wallDir > 3 )
         {
-            d =  -1 + wallDir;
+            d =   Math.abs(d + wallDir - 4);
         }
         else
         {
             d +=  wallDir;
         }
+        
 
         switch (d) {
             //Facing Down

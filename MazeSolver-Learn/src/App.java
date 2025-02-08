@@ -4,8 +4,5 @@ public class App {
         Interface master = new Interface(m);
         m.Simple();
         master.ShowMaze(m.getMaze());
-        Rekursiv r = new Rekursiv(m.getMaze(), master);
-
-        System.out.println("Hello, World!");
     }
 }

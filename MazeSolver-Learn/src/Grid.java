@@ -81,7 +81,7 @@ public class Grid extends JPanel{
             g.setColor(new Color(1f, 0.22f, 0.39f, 0.5f));
             for(int i = 0; i < curPCount; i++)
             {
-                g.fillOval(cords.get(i)[0] * rowH + rowH/(rowH / 5), cords.get(i)[1] * colH + colH/(colH / 10),(int) sphereSize , (int) sphereSize);
+                g.fillOval(cords.get(i)[0] * rowH + rowH/(rowH / 2), cords.get(i)[1] * colH + colH/(colH / 2),(int) sphereSize , (int) sphereSize);
             }
         }
         
