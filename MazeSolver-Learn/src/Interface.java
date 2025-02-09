@@ -99,7 +99,7 @@ public class Interface{
             public void actionPerformed(ActionEvent e)
             {
                 resetMaze();
-                curSolver = new BreathFirstSearch(curM, gui);
+                curSolver = new BreadthFirstSearch(curM, gui);
             }
         });   
         JButton sb3 = new JButton("Tiefensuche");  
