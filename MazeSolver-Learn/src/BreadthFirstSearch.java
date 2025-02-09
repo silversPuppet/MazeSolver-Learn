@@ -46,9 +46,6 @@ public class BreadthFirstSearch extends Solver {
         }
     }
 
-    // Visited Points into waiting list
-    Queue<Point> q = new LinkedList<Point>();
-
     public Point getPathBFS(int x, int y) {
 
         Queue<Point> q = new LinkedList<>();
