@@ -7,9 +7,6 @@ public class HandOnWall extends Solver{
     public HandOnWall(int[][] m, Interface i)
     {
         super(m, i);
-
-
-
         gui = i;
 
         start = FindStart(m);
@@ -19,10 +16,6 @@ public class HandOnWall extends Solver{
         //          W
         // +1 rotates 90 degrees to the left 
         int dir = 0;
-
-        //Check Start
-        if (start != null) {
-            //TO-DO: Check End
 
             //Y coordinate then X because of array 
             while (m[start[1]][start[0]] != 3 && numWalks < (m.length * m[0].length) ) {
@@ -57,8 +50,9 @@ public class HandOnWall extends Solver{
                 gui.addCord(start);
                 numWalks++;
             }
-            gui.ShowMaze(m);
-        }
+        
+        gui.ShowMaze(m);
+        
     }
 
 

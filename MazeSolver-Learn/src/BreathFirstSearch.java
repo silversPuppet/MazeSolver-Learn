@@ -15,13 +15,6 @@ public class BreathFirstSearch extends Solver{
 
         Point p = getPathBFS(start[0],start[1]);
 
-         for (int i = 0; i < maze.length; i++) {
-            for (int j = 0; j < maze[0].length; j++) {
-                System.out.print(maze[i][j]);
-            }
-            System.out.println();
-        }
-
         while(p.getParent() != null) {
             gui.addCord(p.getCords());
             p = p.getParent();
