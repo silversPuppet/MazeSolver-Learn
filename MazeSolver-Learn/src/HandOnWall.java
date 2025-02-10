@@ -10,17 +10,17 @@ public class HandOnWall extends Solver{
         gui = i;
 
         start = FindStart(m);
-        //Shows current dirrection you are facing at 
-        //          E
+        //Dir Zeigt aktuelle Richtung an
+        //          O
         // 0 =  N       S   
         //          W
-        // +1 rotates 90 degrees to the left 
+        // +1 dreht 90 Grad nach links 
         int dir = 0;
-
-            //Y coordinate then X because of array 
+        
+            //     Falls Ziel nicht erreicht     Falls gegangene Schritte nicht zu groß (Falls Lösung nicht auffindbar)
             while (m[start[1]][start[0]] != 3 && numWalks < (m.length * m[0].length) ) {
 
-                //If There isn't a wall to the left of you
+                //Falls keine Wand links vorhanden ist 
                 if(isWall(dir, m, 1) == false)
                 {
                     if(dir < 3)
@@ -34,7 +34,7 @@ public class HandOnWall extends Solver{
                 }
                 else
                 {
-                    //Rotate right until walkspace available 
+                    //Drehe dich nach rechts bis keine Wand vorne vorhanden ist
                     while (isWall(dir, m, 0)) {
 
                         if(dir > 0)
@@ -47,10 +47,10 @@ public class HandOnWall extends Solver{
                     }
                     WalkForward(dir);
                 }   
+                //Fügt gegangen Schritt zum GUI hinzu
                 gui.addCord(start);
                 numWalks++;
             }
-        
         gui.ShowMaze(m);
         
     }
@@ -60,39 +60,31 @@ public class HandOnWall extends Solver{
     //Returns true if There is a Wall forward
     public boolean isWall(int d, int[][] m, int wallDir)
     {
-         //Check Wall Left with wall dir = 0
-        //Check Wall Forward with wall dir
-        if(d + wallDir > 3 )
-        {
-            d =   Math.abs(d + wallDir - 4);
-        }
-        else
-        {
-            d +=  wallDir;
-        }
+        //new Dir hat werte von 0 bis 4 
+        int newDir = (d + wallDir) % 4;
         
 
-        switch (d) {
-            //Facing Down
+        switch (newDir) {
+            //Unten
             case 1:
-                //Check for Index Out of Bounds Exception
-                if(start[1] + 1 <= m[0].length + 1)
+                //Verhindert Index Out of Bounds Exception
+                if(start[1] + 1 < m.length + 1)
                 {
                     return m[start[1] + 1][start[0]] == 1;
                 }
                 else {
                     return true;
                 }
-            //facing Right
+            //Rechts
             case 2:
-                if(start[0] + 1 <= m.length + 1)
+                if(start[0] + 1 < m[0].length + 1)
                 {
                     return m[start[1]][start[0] + 1] == 1;
                 }
                 else {
                     return true;
                 }
-            //Facing Up
+            //Oben
             case 3:
                 if(start[1] - 1 >= 0)
                 {
@@ -100,7 +92,7 @@ public class HandOnWall extends Solver{
                 else {
                     return true;
                 }
-            //Facing left
+            //Links
             default:
                 if(start[0] - 1 >= 0)
                 {
@@ -115,19 +107,19 @@ public class HandOnWall extends Solver{
     public void WalkForward(int d)
     {
         switch (d) {
-            //When down forward
+            //Wenn Unten = Vorne
             case 1:
                 start[1]++;
                 break;
-            //When right Forward
+            //Wenn Oben = Vorne
             case 2:
                 start[0]++;
                 break;
-            //When up forward
+            //Wenn Rechts = Vorne
             case 3:
                 start[1]--;
                 break;
-            //When left forward
+            //Wenn Links = Vorne
             default:
                 start[0]--;
                 break;

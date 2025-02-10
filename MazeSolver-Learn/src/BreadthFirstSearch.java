@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -26,6 +27,7 @@ public class BreadthFirstSearch extends Solver {
         gui.ShowMaze(m);
     }
 
+    //Knoten
     private class Point {
         int x;
         int y;
@@ -48,8 +50,9 @@ public class BreadthFirstSearch extends Solver {
 
     public Point getPathBFS(int x, int y) {
 
+        //Erstelle Warteschlange 
         Queue<Point> q = new LinkedList<>();
-        Set<String> visited = new HashSet<>();
+        ArrayList<String> visited = new ArrayList();
 
         q.add(new Point(x, y, null));
         visited.add(x + "," + y);
@@ -58,7 +61,7 @@ public class BreadthFirstSearch extends Solver {
             Point p = q.remove();
 
             if (maze[p.x][p.y] == 3) {
-                return p; // Goal found
+                return p; 
             }
 
             int[][] directions = { { 1, 0 }, { -1, 0 }, { 0, 1 }, { 0, -1 } };
