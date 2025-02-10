@@ -111,7 +111,7 @@ public class Interface{
             }
         });  
 
-        solveOptPanel.add(space2);solveOptPanel.add(sb1);solveOptPanel.add(sb2);solveOptPanel.add(sb3);
+        solveOptPanel.add(space2);solveOptPanel.add(sb1);solveOptPanel.add(sb3);solveOptPanel.add(sb2);
 
         solveOptPanel.setLayout(new GridLayout(5, 1, 20, 0));
         solveOptPanel.setSize(400,600);
