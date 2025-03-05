@@ -6,5 +6,5 @@ Implements Left Hand algorithm, Depth-First-Search and Breadth-First-Search in d
 Learn about their limitations abilities and how they work in a simple GUI.
 
 
-https://github.com/user-attachments/assets/932991ca-f3ef-4e16-aa87-7c4ea56a7791
+[MazeSolving.webm](https://github.com/user-attachments/assets/d6ef3bac-dbf9-4c10-b3b3-34964b5e8a5b)
 
